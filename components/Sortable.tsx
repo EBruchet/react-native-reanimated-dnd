@@ -1,25 +1,21 @@
 import React, { memo, useCallback, useMemo } from "react";
 import { StyleSheet } from "react-native";
-import Animated from "react-native-reanimated";
 import {
-  GestureHandlerRootView,
   FlatList,
+  GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
+import Animated from "react-native-reanimated";
 import { DropProvider } from "../context/DropContext";
+import { useHorizontalSortableList } from "../hooks/useHorizontalSortableList";
+import { useSortableList } from "../hooks/useSortableList";
 import {
+  SortableDirection,
   SortableProps,
   SortableRenderItemProps,
-  SortableDirection,
 } from "../types/sortable";
-import {
-  useSortableList,
-  UseSortableListOptions,
-} from "../hooks/useSortableList";
-import { useHorizontalSortableList } from "../hooks/useHorizontalSortableList";
-import { UseHorizontalSortableListOptions } from "../types/sortable";
-import { dataHash } from "./sortableUtils";
 import { SortableListContext } from "./SortableItem";
+import { dataHash } from "./sortableUtils";
 
 // Create animated versions of both components
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
@@ -198,6 +194,7 @@ function VerticalSortableContent<TData extends { id: string }>({
               onMomentumScrollEnd={handleScrollEnd}
               simultaneousHandlers={dropProviderRef}
               showsVerticalScrollIndicator={false}
+              {...scrollViewProps}
             />
           ) : (
             <AnimatedScrollView

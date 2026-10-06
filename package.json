@@ -1,6 +1,6 @@
 {
   "name": "@ebruchet/react-native-reanimated-dnd",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A powerful drag-and-drop library for React Native using Reanimated 4 and Worklets",
   "main": "lib/index.js",
   "module": "lib/index.js",
